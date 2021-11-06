@@ -1,0 +1,15 @@
+.anchor {
+    -fx-background-image: url('imgs/Background_Home_DataHealth.png');
+}
+
+.button {
+    -fx-background-radius: 8px;
+    -fx-background-color: #1A96D6;
+    -fx-border-style: Solid;
+    -fx-border-radius: 8px;
+    -fx-font-size: 22px;
+}
+
+.inputTexto{
+    -fx-background-radius: 8px;
+}

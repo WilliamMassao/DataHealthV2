@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="anchor">
+               <stylesheets>
+                  <URL value="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" />
+               </stylesheets>
+               <children>
+                  <Button defaultButton="true" layoutX="1073.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" text="Logoff" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="1002.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Icone%20do%20Profissional.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="801.0" layoutY="66.0" text="Nome Profissional">
+                     <font>
+                        <Font name="Comic Sans MS" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="563.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Icone%20do%20Paciente.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="598.0" layoutY="204.0" text="Paciente">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-17.0" layoutX="699.0" layoutY="235.0" startX="-100.0" stroke="#8e918d" strokeWidth="2.0" />
+                  <Button defaultButton="true" layoutX="483.0" layoutY="247.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" layoutX="483.0" layoutY="300.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Listar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="536.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Icone%20dos%20Medicamentos.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="577.0" layoutY="361.0" text="Medicamentos">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Line endX="24.0" layoutX="699.0" layoutY="392.0" startX="-122.0" stroke="#8e918d" strokeWidth="2.0" />
+                  <Button defaultButton="true" layoutX="483.0" layoutY="404.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" layoutX="483.0" layoutY="457.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Listar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="53.0" fitWidth="47.0" layoutX="526.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/Icone%20do%20Profissional.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="578.0" layoutY="510.0" text="Profissionais">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Line endX="4.0" layoutX="699.0" layoutY="541.0" startX="-121.0" stroke="#8e918d" strokeWidth="2.0" />
+                  <Button defaultButton="true" layoutX="483.0" layoutY="553.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" layoutX="483.0" layoutY="606.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Listar">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="75.0" fitWidth="324.0" layoutX="64.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imgs/𝙳𝚊𝚝𝚊%20𝙷𝚎𝚊𝚕𝚝𝚑.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="173.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../ProjetosJava/DataHealth2.0/src/layouts/imgs/download.png" />
+               </image>
+            </ImageView>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
