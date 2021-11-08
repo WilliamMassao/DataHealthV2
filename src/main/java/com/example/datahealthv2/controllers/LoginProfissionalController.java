@@ -38,4 +38,6 @@ public class LoginProfissionalController {
         (((Node) event.getSource())).getScene().getWindow().hide();
         base.openNewScreen("layout_home_login.fxml", "Tela Home");
     }
+
+
 }

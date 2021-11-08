@@ -32,23 +32,20 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.datahealthv2.controllers.HomeProfissionalLogadoController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="anchor">
                <stylesheets>
-                  <URL value="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" />
+                  <URL value="@application.css" />
                </stylesheets>
                <children>
                   <Button defaultButton="true" layoutX="1073.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" text="Logoff" textFill="WHITE">
@@ -58,7 +55,7 @@
                   </Button>
                   <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="1002.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imgs/Icone%20do%20Profissional.png" />
+                        <Image url="@imgs/iconeprofissional.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="801.0" layoutY="66.0" text="Nome Profissional">
@@ -68,7 +65,7 @@
                   </Label>
                   <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="563.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imgs/Icone%20do%20Paciente.png" />
+                        <Image url="@imgs/iconepaciente.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="598.0" layoutY="204.0" text="Paciente">
@@ -77,7 +74,7 @@
                      </font>
                   </Label>
                   <Line endX="-17.0" layoutX="699.0" layoutY="235.0" startX="-100.0" stroke="#8e918d" strokeWidth="2.0" />
-                  <Button defaultButton="true" layoutX="483.0" layoutY="247.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                  <Button fx:id="btnCadastrarPaciente" defaultButton="true" layoutX="483.0" layoutY="247.0" mnemonicParsing="false" onAction="#cadastrarPaciente" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -89,7 +86,7 @@
                   </Button>
                   <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="536.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imgs/Icone%20dos%20Medicamentos.png" />
+                        <Image url="@imgs/iconemedicamentos.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="577.0" layoutY="361.0" text="Medicamentos">
@@ -98,7 +95,7 @@
                      </font>
                   </Label>
                   <Line endX="24.0" layoutX="699.0" layoutY="392.0" startX="-122.0" stroke="#8e918d" strokeWidth="2.0" />
-                  <Button defaultButton="true" layoutX="483.0" layoutY="404.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                  <Button fx:id="btnCadastrarMedicamentos" defaultButton="true" layoutX="483.0" layoutY="404.0" mnemonicParsing="false" onAction="#cadastrarMedicamentos" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -110,7 +107,7 @@
                   </Button>
                   <ImageView fitHeight="53.0" fitWidth="47.0" layoutX="526.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imgs/Icone%20do%20Profissional.png" />
+                        <Image url="@imgs/iconeprofissional.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="578.0" layoutY="510.0" text="Profissionais">
@@ -119,7 +116,7 @@
                      </font>
                   </Label>
                   <Line endX="4.0" layoutX="699.0" layoutY="541.0" startX="-121.0" stroke="#8e918d" strokeWidth="2.0" />
-                  <Button defaultButton="true" layoutX="483.0" layoutY="553.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
+                  <Button fx:id="btnCadastrarProfissionais" defaultButton="true" layoutX="483.0" layoutY="553.0" mnemonicParsing="false" onAction="#cadastrarProfissionais" prefHeight="33.0" prefWidth="315.0" text="Cadastrar">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -133,12 +130,12 @@
             </AnchorPane>
             <ImageView fitHeight="75.0" fitWidth="324.0" layoutX="64.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imgs/𝙳𝚊𝚝𝚊%20𝙷𝚎𝚊𝚕𝚝𝚑.png" />
+                  <Image url="@imgs/datahealth.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="173.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../ProjetosJava/DataHealth2.0/src/layouts/imgs/download.png" />
+                  <Image url="@imgs/download.png" />
                </image>
             </ImageView>
          </children>

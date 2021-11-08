@@ -50,17 +50,17 @@
          <children>
             <AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="anchor">
                <stylesheets>
-                  <URL value="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" />
+                  <URL value="@application.css" />
                </stylesheets>
                <children>
                   <ImageView fitHeight="75.0" fitWidth="342.0" layoutX="71.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imgs/𝙳𝚊𝚝𝚊%20𝙷𝚎𝚊𝚕𝚝𝚑.png" />
+                        <Image url="@imgs/datahealth.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="189.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../ProjetosJava/DataHealth2.0/src/layouts/imgs/download.png" />
+                        <Image url="@imgs/download.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="93.0" layoutY="90.0" text="Paciente">
@@ -80,9 +80,9 @@
                   </Label>
                   <TextField layoutX="158.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
                   <TextField layoutX="158.0" layoutY="538.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" />
+                  <TextField layoutX="701.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
                   <TextField layoutX="158.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" />
+                  <TextField layoutX="701.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
                   <Button layoutX="701.0" layoutY="640.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="427.0" text="Salvar">
                      <opaqueInsets>
                         <Insets />
@@ -90,7 +90,7 @@
                   </Button>
                   <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="915.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../ProjetosJava/DataHealth2.0/src/layouts/imgs/93634.png" />
+                        <Image url="@imgs/93634.png" />
                      </image>
                   </ImageView>
                   <ComboBox layoutX="701.0" layoutY="538.0" prefHeight="51.0" prefWidth="427.0" />
@@ -121,7 +121,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" stylesheets="@../../../../../../../../ProjetosJava/DataHealth2.0/src/layouts/application.css" text="Logoff" textFill="WHITE">
+            <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
