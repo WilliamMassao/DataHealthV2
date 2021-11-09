@@ -32,19 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.datahealthv2.controllers.CadastroPacienteController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
@@ -78,12 +73,12 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="158.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="158.0" layoutY="538.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <TextField layoutX="158.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <Button layoutX="701.0" layoutY="640.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="427.0" text="Salvar">
+                  <TextField fx:id="txtNome" layoutX="158.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtTipoSanguineo" layoutX="158.0" layoutY="481.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtEmail" layoutX="701.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <TextField fx:id="txtCpf" layoutX="158.0" layoutY="370.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtTelefone" layoutX="701.0" layoutY="370.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <Button fx:id="btnCadastrar" layoutX="702.0" layoutY="686.0" mnemonicParsing="false" onAction="#CadastrarPaciente" prefHeight="51.0" prefWidth="427.0" text="Salvar">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -93,30 +88,42 @@
                         <Image url="@imgs/93634.png" />
                      </image>
                   </ImageView>
-                  <ComboBox layoutX="701.0" layoutY="538.0" prefHeight="51.0" prefWidth="427.0" />
-                  <Label layoutX="701.0" layoutY="498.0" text="Medicamento">
+                  <ComboBox fx:id="cbxMedicamento" layoutX="701.0" layoutY="481.0" prefHeight="51.0" prefWidth="427.0" />
+                  <Label layoutX="701.0" layoutY="440.0" text="Medicamento">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSenha" layoutX="158.0" layoutY="601.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <Label layoutX="157.0" layoutY="555.0" text="Senha">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="157.0" layoutY="440.0" text="Tipo Sanguíneo">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="157.0" layoutY="324.0" text="CPF do Paciente">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="701.0" layoutY="324.0" text="Telefone">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtConfirmarSenha" layoutX="702.0" layoutY="601.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <Label layoutX="701.0" layoutY="555.0" text="Confirmar Senha">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="158.0" layoutY="355.0" text="CPF do Paciente">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="158.0" layoutY="498.0" text="Tipo Sanguíneo">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
             <Label layoutX="701.0" layoutY="212.0" text="Email">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="701.0" layoutY="347.0" text="Telefone">
                <font>
                   <Font size="24.0" />
                </font>
