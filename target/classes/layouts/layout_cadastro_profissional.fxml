@@ -32,18 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.datahealthv2.controllers.CadastroProfissionalController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
@@ -77,12 +73,12 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="155.0" layoutY="237.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="155.0" layoutY="501.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="237.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <TextField layoutX="155.0" layoutY="369.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="369.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <Button layoutX="698.0" layoutY="625.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="427.0" text="Salvar">
+                  <TextField fx:id="txtNome" layoutX="155.0" layoutY="237.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtSenha" layoutX="155.0" layoutY="501.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtMatricula" layoutX="701.0" layoutY="237.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <TextField fx:id="txtCpf" layoutX="155.0" layoutY="369.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtCargo" layoutX="701.0" layoutY="369.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <Button fx:id="txtCadastrar" layoutX="698.0" layoutY="625.0" mnemonicParsing="false" onAction="#CadastrarProfissional" prefHeight="51.0" prefWidth="427.0" text="Salvar">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -92,13 +88,13 @@
                         <Image url="@imgs/93634.png" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="155.0" layoutY="625.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtConfirmarSenha" layoutX="155.0" layoutY="625.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
                   <Label layoutX="155.0" layoutY="585.0" text="Confirmar Senha">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="698.0" layoutY="501.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtRegistroProfissional" layoutX="702.0" layoutY="501.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
                   <Label layoutX="698.0" layoutY="453.0" text="Registro Profissional">
                      <font>
                         <Font size="24.0" />
@@ -126,7 +122,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
+            <Button fx:id="btnCadastrar" layoutX="992.0" layoutY="46.0" mnemonicParsing="false" onAction="#CadastrarProfissional" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

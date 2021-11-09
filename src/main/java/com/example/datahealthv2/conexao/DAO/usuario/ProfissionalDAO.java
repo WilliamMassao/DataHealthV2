@@ -45,17 +45,17 @@ public class ProfissionalDAO <E extends Entidade> extends DAO {
 
     @Override
     public void Inserir(Usuario usuario) throws SQLException, ClassNotFoundException {
-        UsuarioProfissional paciente = (UsuarioProfissional)usuario;
+        UsuarioProfissional profissional = (UsuarioProfissional)usuario;
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
         try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = getInserirProfissional();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                stmt.setString(1, paciente.getNome());
-                stmt.setString(2, paciente.getCpf());
-                stmt.setString(3, paciente.getSenha());
-                stmt.setString(4, paciente.getMatricula());
-                stmt.setString(5, paciente.getCargo());
-                stmt.setString(6, paciente.getRegistroProfissional());
+                stmt.setString(1, profissional.getNome());
+                stmt.setString(2, profissional.getCpf());
+                stmt.setString(3, profissional.getSenha());
+                stmt.setString(4, profissional.getMatricula());
+                stmt.setString(5, profissional.getCargo());
+                stmt.setString(6, profissional.getRegistroProfissional());
                 stmt.executeUpdate();
             }
         }
