@@ -14,6 +14,7 @@ import com.example.datahealthv2.model.UsuarioProfissional;
 public class LoginProfissionalController {
 
     BaseController base = new BaseController();
+    UsuarioProfissional user = new UsuarioProfissional();
 
     @FXML
     private Button btnLogin;
@@ -26,11 +27,11 @@ public class LoginProfissionalController {
 
     @FXML
     void fazerLogin(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
-        UsuarioProfissional user = new UsuarioProfissional();
         String matricula = txtCPFProfissional.getText();
         String senha = txtSenhaProfissional.getText();
         base.realizarLogin(matricula, senha, "layout_home_logado_profissional.fxml",
                 ("Tela de Logado Profissional " + matricula), event, user);
+
     }
 
     @FXML

@@ -3,6 +3,7 @@ package com.example.datahealthv2.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import com.example.datahealthv2.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +17,7 @@ import com.example.datahealthv2.model.UsuarioPaciente;
 public class LoginPacienteController {
 
     BaseController base = new BaseController();
+    UsuarioPaciente user = new UsuarioPaciente();
 
     @FXML
     private Button btnLogin;
@@ -28,7 +30,6 @@ public class LoginPacienteController {
 
     @FXML
     void fazerLogin(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
-        UsuarioPaciente user = new UsuarioPaciente();
         String cpfPaciente = txtCPFPaciente.getText();
         String senhaPaciente = txtSenhaPaciente.getText();
         base.realizarLogin(cpfPaciente, senhaPaciente, "layout_lista_medicamentos_cadastrados_para_nomePessoa.fxml",
@@ -40,5 +41,7 @@ public class LoginPacienteController {
         (((Node) event.getSource())).getScene().getWindow().hide();
         base.openNewScreen("layout_home_login.fxml", "Tela Home");
     }
+
+
 
 }

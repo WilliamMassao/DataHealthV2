@@ -3,6 +3,9 @@ package com.example.datahealthv2.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import com.example.datahealthv2.conexao.DAO.DAO;
+import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
+import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,6 +24,16 @@ public class BaseController {
     UsuarioPaciente user = new UsuarioPaciente();
 
     Acesso acesso = new Acesso();
+
+    Usuario userProfissional = new UsuarioProfissional();
+
+    public void sendData (Usuario usuario) throws SQLException, ClassNotFoundException{
+        userProfissional = acesso.retornaUsuario(usuario);
+    }
+
+    public Usuario receiveData(){
+        return userProfissional;
+    }
 
     public void openNewScreen(String fxml, String title) throws IOException {
         Stage stage = new Stage();

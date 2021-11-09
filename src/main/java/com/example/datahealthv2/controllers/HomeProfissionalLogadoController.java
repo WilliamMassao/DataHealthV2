@@ -1,14 +1,33 @@
 package com.example.datahealthv2.controllers;
 
+import com.example.datahealthv2.model.UsuarioPaciente;
+import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HomeProfissionalLogadoController {
 
-    BaseController base = new BaseController();
+    @FXML
+    private Label lblNomeProfissional;
+
+    BaseController base =  new BaseController();
+
+    UsuarioProfissional user = new UsuarioProfissional();
+
+    @FXML
+    public void initialize() {
+        user = (UsuarioProfissional) base.receiveData();
+        System.out.println(user.getCpf());
+        lblNomeProfissional.setText(user.getNome());
+    }
 
     @FXML
     public void cadastrarPaciente(ActionEvent event) throws IOException {
@@ -25,6 +44,5 @@ public class HomeProfissionalLogadoController {
     @FXML
     public void cadastrarProfissionais(ActionEvent event) throws IOException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        base.openNewScreen("layout_cadastro_profissional.fxml", "Cadastro Profissional");
     }
 }

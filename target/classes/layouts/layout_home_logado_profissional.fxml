@@ -58,7 +58,7 @@
                         <Image url="@imgs/iconeprofissional.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="801.0" layoutY="66.0" text="Nome Profissional">
+                  <Label fx:id="lblNomeProfissional" layoutX="801.0" layoutY="66.0" text="Nome Profissional">
                      <font>
                         <Font name="Comic Sans MS" size="24.0" />
                      </font>
