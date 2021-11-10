@@ -2,6 +2,7 @@ package com.example.datahealthv2.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
@@ -25,14 +26,16 @@ public class BaseController {
 
     Acesso acesso = new Acesso();
 
-    Usuario userProfissional = new UsuarioProfissional();
+    UsuarioProfissional userProfissional = new UsuarioProfissional();
 
-    public void sendData (Usuario usuario) throws SQLException, ClassNotFoundException{
-        userProfissional = acesso.retornaUsuario(usuario);
-    }
-
-    public Usuario receiveData(){
-        return userProfissional;
+    public void openNewScreen(String fxml, String title, Object objectData) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/layouts/" + fxml));
+        stage.setTitle(fxml);
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+        stage.show();
+        notifyAllListeners(title, objectData);
     }
 
     public void openNewScreen(String fxml, String title) throws IOException {
@@ -42,7 +45,9 @@ public class BaseController {
         stage.setScene(new Scene(root));
         stage.setTitle(title);
         stage.show();
+        notifyAllListeners(title, null);
     }
+
 
     public void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
@@ -59,10 +64,28 @@ public class BaseController {
 
         if(senhaValida.equals(true)){
             ((Node)(event.getSource())).getScene().getWindow().hide();
-            openNewScreen(fxml, nextTitle);
+            openNewScreen(fxml, nextTitle, acesso.retornaUsuario(user));
         }
         else{
             openAlert("Erro ao Realizar Login", "Por favor realize uma nova tentativa", "", AlertType.ERROR);
+        }
+
+    }
+
+    // Enviar parâmetros para outras telas
+    private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
+
+    public static interface onChangeScreen{
+        void onScreenChanged(String newScreen, Object objectData);
+    }
+
+    public static void addOnchageScreenListener(onChangeScreen newListener){
+        listeners.add(newListener);
+    }
+
+    private static void notifyAllListeners (String newScreen, Object objectData){
+        for (onChangeScreen l:listeners){
+            l.onScreenChanged(newScreen, objectData);
         }
     }
 }

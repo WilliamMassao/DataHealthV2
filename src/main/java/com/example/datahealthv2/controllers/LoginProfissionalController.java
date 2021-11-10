@@ -31,7 +31,6 @@ public class LoginProfissionalController {
         String senha = txtSenhaProfissional.getText();
         base.realizarLogin(matricula, senha, "layout_home_logado_profissional.fxml",
                 ("Tela de Logado Profissional " + matricula), event, user);
-
     }
 
     @FXML

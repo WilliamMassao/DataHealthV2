@@ -53,12 +53,12 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="1002.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="818.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imgs/iconeprofissional.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblNomeProfissional" layoutX="801.0" layoutY="66.0" text="Nome Profissional">
+                  <Label fx:id="lblNomeProfissional" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="895.0" layoutY="63.0" text="Nome " textAlignment="RIGHT">
                      <font>
                         <Font name="Comic Sans MS" size="24.0" />
                      </font>

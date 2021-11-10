@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -24,9 +25,14 @@ public class HomeProfissionalLogadoController {
 
     @FXML
     public void initialize() {
-        user = (UsuarioProfissional) base.receiveData();
-        System.out.println(user.getCpf());
-        lblNomeProfissional.setText(user.getNome());
+        base.addOnchageScreenListener(new BaseController.onChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object objectData) {
+                user = (UsuarioProfissional) objectData;
+                lblNomeProfissional.setText(user.getNome().split(" ")[0]);
+            }
+        });
+
     }
 
     @FXML
