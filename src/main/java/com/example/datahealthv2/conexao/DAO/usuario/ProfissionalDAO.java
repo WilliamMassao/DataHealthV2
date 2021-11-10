@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.model.Entidade;
+import com.example.datahealthv2.model.Medicamento;
 import com.example.datahealthv2.model.Usuario;
 import com.example.datahealthv2.model.UsuarioProfissional;
 
@@ -59,6 +60,11 @@ public class ProfissionalDAO <E extends Entidade> extends DAO {
                 stmt.executeUpdate();
             }
         }
+    }
+
+    @Override
+    public void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException {
+
     }
 
     protected String getInserirProfissional() {

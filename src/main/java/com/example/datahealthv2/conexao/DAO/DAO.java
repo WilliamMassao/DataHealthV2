@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.datahealthv2.model.Entidade;
+import com.example.datahealthv2.model.Medicamento;
 import com.example.datahealthv2.model.Usuario;
 
 public abstract class DAO<E extends Entidade> {
@@ -49,6 +50,7 @@ public abstract class DAO<E extends Entidade> {
     }
 
     public abstract void Inserir(Usuario paciente) throws SQLException, ClassNotFoundException;
+    public abstract void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException;
 
     protected abstract E preencheEntidade(ResultSet rs);
 

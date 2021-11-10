@@ -7,13 +7,13 @@ import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.model.Entidade;
 import com.example.datahealthv2.model.Medicamento;
 import com.example.datahealthv2.model.Usuario;
-
+import com.example.datahealthv2.model.UsuarioPaciente;
 
 public class MedicamentoDAO<E extends Entidade> extends DAO {
 
     public MedicamentoDAO() {
         super(Medicamento.class);
-        setTabela("usuario_paciente");
+        setTabela("medicamento");
     }
 
     @Override
@@ -31,10 +31,20 @@ public class MedicamentoDAO<E extends Entidade> extends DAO {
         return (E) entidade;
     }
 
+    @Override
+    protected String getLocalizaCommand() {
+        return "select * from usuario_paciente where Cpf = ? ";
+    }
+
+    @Override
+    public void Inserir(Usuario paciente) throws SQLException, ClassNotFoundException {
+    }
+
+    @Override
     public void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
         try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            String SQL = getInserirMedicamento();
+            String SQL = InserirMedicamento();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setString(1, medicamento.getNomeComercial());
                 stmt.setString(2, medicamento.getNomeGenerico());
@@ -44,20 +54,7 @@ public class MedicamentoDAO<E extends Entidade> extends DAO {
         }
     }
 
-    @Override
-    protected String getLocalizaCommand() {
-        return "select * from usuario_paciente where Cpf = ? ";
+    protected String InserirMedicamento() {
+        return "insert into "+ tabela +" (NomeComercial, NomeGenerico, LinkBula) values (?, ?, ?)";
     }
-
-    protected String getInserirMedicamento() {
-        return "insert into usuario_paciente (NomeComercial, NomeGenerico, LinkBula) values (?, ?, ?)";
-    }
-
-    @Override
-    public void Inserir(Usuario paciente) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-
-    }
-
-
 }

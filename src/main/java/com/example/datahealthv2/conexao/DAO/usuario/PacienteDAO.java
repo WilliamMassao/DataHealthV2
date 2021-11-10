@@ -57,6 +57,11 @@ public class PacienteDAO<E extends Entidade> extends DAO {
     }
 
     @Override
+    public void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException {
+
+    }
+
+    @Override
     protected String getLocalizaCommand() {
         return "select * from usuario_paciente where Cpf = ? ";
     }

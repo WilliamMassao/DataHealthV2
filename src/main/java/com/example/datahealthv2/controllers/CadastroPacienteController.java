@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
-public class CadastroPacienteController {
+public class CadastroPacienteController extends  BaseController{
     @FXML
     private TextField txtCpf, txtNome, txtTipoSanguineo, txtEmail, txtTelefone, txtSenha, txtConfirmarSenha;
 
@@ -58,12 +58,4 @@ public class CadastroPacienteController {
 
         return dadosValidos;
     }
-    public void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(messageHeader);
-        alert.setContentText(messageInside);
-        alert.showAndWait();
-    }
-
 }

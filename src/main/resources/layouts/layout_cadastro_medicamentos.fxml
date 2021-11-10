@@ -32,18 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.datahealthv2.controllers.CadastroMedicamentoController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
@@ -72,17 +68,15 @@
                         <Font name="Comic Sans MS" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="158.0" layoutY="212.0" text="Nome Comercial  ">
+                  <Label layoutX="158.0" layoutY="263.0" text="Nome Comercial  ">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="158.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="158.0" layoutY="538.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="252.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <TextField layoutX="158.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
-                  <TextField layoutX="701.0" layoutY="395.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
-                  <Button layoutX="702.0" layoutY="538.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="427.0" text="Salvar">
+                  <TextField fx:id="txtNomeComercial" layoutX="155.0" layoutY="298.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" />
+                  <TextField fx:id="txtNomeGenerico" layoutX="698.0" layoutY="298.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <TextField fx:id="txtLinkBula" layoutX="155.0" layoutY="440.0" prefHeight="51.0" prefWidth="427.0" styleClass="inputTexto" stylesheets="@application.css" />
+                  <Button fx:id="btnCadastrar" layoutX="699.0" layoutY="440.0" mnemonicParsing="false" onAction="#CadastrarMedicamento" prefHeight="51.0" prefWidth="427.0" text="Salvar">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -92,28 +86,18 @@
                         <Image url="@imgs/93634.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="158.0" layoutY="405.0" text="Link da Bula">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="699.0" layoutY="263.0" text="Nome Genérico">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="158.0" layoutY="355.0" text="Data da Prescrição">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="158.0" layoutY="498.0" text="Link da Bula">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="701.0" layoutY="212.0" text="Nome Genérico">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="701.0" layoutY="347.0" text="CRM Médico">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
             <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
