@@ -48,7 +48,7 @@
                   <URL value="@application.css" />
                </stylesheets>
                <children>
-                  <Button defaultButton="true" layoutX="1073.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" text="Logoff" textFill="WHITE">
+                  <Button fx:id="btnLogoff" defaultButton="true" layoutX="1073.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickLogoff" prefHeight="41.0" prefWidth="131.0" text="Logoff" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>

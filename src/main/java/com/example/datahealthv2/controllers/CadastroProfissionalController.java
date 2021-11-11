@@ -6,19 +6,34 @@ import com.example.datahealthv2.login.Acesso;
 import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
-public class CadastroProfissionalController {
+public class CadastroProfissionalController extends BaseController{
 
     @FXML
     private TextField txtCpf,txtNome,txtMatricula,txtCargo,txtSenha,txtRegistroProfissional,txtConfirmarSenha;
 
     @FXML
     private Button btnLogin;
+
+    UsuarioProfissional profissional = new UsuarioProfissional();
+
+    @FXML
+    public void initialize() {
+        addOnchageScreenListener(new BaseController.onChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object objectData) {
+                profissional = (UsuarioProfissional) objectData;
+            }
+        });
+    }
 
     @FXML
     public void CadastrarProfissional(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -64,5 +79,11 @@ public class CadastroProfissionalController {
         alert.setHeaderText(messageHeader);
         alert.setContentText(messageInside);
         alert.showAndWait();
+    }
+
+    @FXML
+    public void clickBackScreen(MouseEvent event) throws IOException {
+        (((Node) event.getSource())).getScene().getWindow().hide();
+        openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional",profissional);
     }
 }

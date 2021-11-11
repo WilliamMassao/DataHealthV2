@@ -14,7 +14,7 @@ import com.example.datahealthv2.login.Acesso;
 import com.example.datahealthv2.model.UsuarioPaciente;
 
 
-public class LoginPacienteController {
+public class LoginPacienteController extends BaseController {
 
     BaseController base = new BaseController();
     UsuarioPaciente user = new UsuarioPaciente();

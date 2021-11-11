@@ -6,11 +6,15 @@ import com.example.datahealthv2.model.UsuarioPaciente;
 import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class CadastroPacienteController extends  BaseController{
@@ -23,17 +27,31 @@ public class CadastroPacienteController extends  BaseController{
     @FXML
     private Button btnLogin;
 
+    UsuarioProfissional profissional = new UsuarioProfissional();
+
+    @FXML
+    public void initialize() {
+        addOnchageScreenListener(new BaseController.onChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object objectData) {
+                profissional = (UsuarioProfissional) objectData;
+            }
+        });
+    }
+
+    @FXML
     public void CadastrarPaciente(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Boolean dadosValidos = false;
         PacienteDAO paciente = new PacienteDAO();
-        UsuarioPaciente user = new UsuarioPaciente();
+        UsuarioPaciente userCreated = new UsuarioPaciente();
 
-        user.setCpf(txtCpf.getText());
-        user.setNome(txtNome.getText());
-        user.setTipoSanguineo(txtTipoSanguineo.getText());
-        user.setEmail(txtEmail.getText());
-        user.setTelefone(txtTelefone.getText());
-        user.setSenha(txtSenha.getText());
+        userCreated.setCpf(txtCpf.getText());
+        userCreated.setNome(txtNome.getText());
+        userCreated.setTipoSanguineo(txtTipoSanguineo.getText());
+        userCreated.setEmail(txtEmail.getText());
+        userCreated.setTelefone(txtTelefone.getText());
+        userCreated.setSenha(txtSenha.getText());
+
         String confirmarSenha = txtConfirmarSenha.getText();
 
         if(validarCampoVazio(user.getCpf(), "CPF") && validarCampoVazio(user.getNome(), "Nome") &&
@@ -43,5 +61,11 @@ public class CadastroPacienteController extends  BaseController{
             paciente.Inserir(user);
             openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
         }
+    }
+
+    @FXML
+    public void clickBackScreen(MouseEvent event) throws IOException {
+        (((Node) event.getSource())).getScene().getWindow().hide();
+        openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional",profissional);
     }
 }

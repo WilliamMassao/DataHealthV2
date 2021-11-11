@@ -72,6 +72,11 @@ public class BaseController {
 
     }
 
+    public void clickLogoff(ActionEvent event) throws IOException {
+        (((Node) event.getSource())).getScene().getWindow().hide();
+        openNewScreen("layout_home_login.fxml", "Tela Home");
+    }
+
     // Enviar parâmetros para outras telas
     private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
 
