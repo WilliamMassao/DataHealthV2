@@ -3,6 +3,8 @@ package com.example.datahealthv2.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
@@ -24,7 +26,7 @@ public class BaseController {
 
     UsuarioPaciente user = new UsuarioPaciente();
 
-    Acesso acesso = new Acesso();
+    static Acesso acesso = new Acesso();
 
     UsuarioProfissional userProfissional = new UsuarioProfissional();
 
@@ -49,7 +51,7 @@ public class BaseController {
     }
 
 
-    public void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
+    public static void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(messageHeader);
@@ -94,6 +96,7 @@ public class BaseController {
         }
     }
 
+    // Validações dos Campos
     public Boolean validarCampoVazio(Object objectData, String nomeCampo){
         Boolean campoVazio = true;
         if(objectData.toString().isEmpty()){
@@ -110,6 +113,34 @@ public class BaseController {
             openAlert("Erro ao Cadastrar Paciente", "Senhas divergem, por favor cadastre a mesma senha", "", Alert.AlertType.ERROR);
         }
         return  senhaConfirmada;
+    }
+
+    public static boolean validarCPF (String cpf)
+    {
+        String regex = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}";
+        Pattern p = Pattern.compile(regex);
+        if (cpf == null) {
+            return false;
+        }
+        Matcher m = p.matcher(cpf);
+        if(!m.matches()){
+            openAlert("Erro ao Cadastrar Paciente", "CPF Inválido", "", Alert.AlertType.ERROR);
+        }
+        return m.matches();
+    }
+
+    public static boolean validarCPFExistente (Usuario user){
+        boolean cpfNaoExistente = true;
+        user.setCpf(user.getCpf().replaceAll("\\.", "").replaceAll("-", ""));
+        try {
+             if (!acesso.retornaUsuario(user).getCpf().equals("")){
+                 openAlert("Erro ao Cadastrar Paciente", "CPF já cadastrado", "", Alert.AlertType.ERROR);
+                 cpfNaoExistente = false;
+             }
+        }catch (Exception e){
+            cpfNaoExistente = true;
+        }
+        return cpfNaoExistente;
     }
 }
 

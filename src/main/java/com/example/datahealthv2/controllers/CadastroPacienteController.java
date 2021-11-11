@@ -54,13 +54,16 @@ public class CadastroPacienteController extends  BaseController{
 
         String confirmarSenha = txtConfirmarSenha.getText();
 
-        if(validarCampoVazio(user.getCpf(), "CPF") && validarCampoVazio(user.getNome(), "Nome") &&
-                validarCampoVazio(user.getTipoSanguineo(), "Tipo Sanguíneo") && validarCampoVazio(user.getEmail(), "Email") &&
-                validarCampoVazio(user.getTelefone(), "Telefone") && validarCampoVazio(user.getSenha(), "Senha")
-                && validarCampoVazio(confirmarSenha, "Confirmação Senha") && validaSenhaConfirmacao(user.getSenha(), confirmarSenha) ){
-            paciente.Inserir(user);
+        if(validarCampoVazio(userCreated.getCpf(), "CPF") && validarCampoVazio(userCreated.getNome(), "Nome") &&
+                validarCampoVazio(userCreated.getTipoSanguineo(), "Tipo Sanguíneo") && validarCampoVazio(userCreated.getEmail(), "Email") &&
+                validarCampoVazio(userCreated.getTelefone(), "Telefone") && validarCampoVazio(userCreated.getSenha(), "Senha")
+                && validarCampoVazio(confirmarSenha, "Confirmação Senha") && validaSenhaConfirmacao(userCreated.getSenha(), confirmarSenha) && validarCPF(userCreated.getCpf())
+                && validarCPFExistente(userCreated)){
+            userCreated.setCpf(txtCpf.getText().replaceAll("\\.", "").replaceAll("-", ""));
+            paciente.Inserir(userCreated);
             openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
         }
+
     }
 
     @FXML

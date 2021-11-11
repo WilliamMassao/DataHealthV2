@@ -73,14 +73,6 @@ public class CadastroProfissionalController extends BaseController{
         return dadosValidos;
     }
 
-    public void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(messageHeader);
-        alert.setContentText(messageInside);
-        alert.showAndWait();
-    }
-
     @FXML
     public void clickBackScreen(MouseEvent event) throws IOException {
         (((Node) event.getSource())).getScene().getWindow().hide();

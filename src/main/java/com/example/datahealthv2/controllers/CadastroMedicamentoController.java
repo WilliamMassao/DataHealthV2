@@ -40,24 +40,12 @@ public class CadastroMedicamentoController extends BaseController {
         medicamento.setNomeComercial(txtNomeComercial.getText());
         medicamento.setNomeGenerico(txtNomeGenerico.getText());
 
-        if (dadosValidos) {
+        if (validarCampoVazio(medicamento.getLinkBula(), "Link da Bula")
+                && validarCampoVazio(medicamento.getNomeComercial(), "Nome Comercial do Medicamento")
+                && validarCampoVazio(medicamento.getNomeGenerico(), "Nome Genérico do Medicamento")) {
             medicamentoDAO.Inserir(medicamento);
-            openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
-        } else
-            openAlert("Erro ao Cadastrar Paciente", "Por favor realize uma nova tentativa", "", Alert.AlertType.ERROR);
-    }
-
-    public void openAlert(String title, String messageHeader, String messageInside, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(messageHeader);
-        alert.setContentText(messageInside);
-        alert.showAndWait();
-    }
-
-    public boolean ValidaDados(UsuarioPaciente user, String confirmarSenha) {
-        Boolean dadosValidos = true;
-        return dadosValidos;
+            openAlert("Medicamento Cadastrado", "Medicamento Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML

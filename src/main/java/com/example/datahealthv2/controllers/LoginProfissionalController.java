@@ -38,5 +38,4 @@ public class LoginProfissionalController extends BaseController{
         openNewScreen("layout_home_login.fxml", "Tela Home");
     }
 
-
 }
