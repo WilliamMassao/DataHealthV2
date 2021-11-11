@@ -43,7 +43,7 @@
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
-            <AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="anchor">
+            <AnchorPane  prefHeight="768.0" prefWidth="1280.0" styleClass="anchor">
                <stylesheets>
                   <URL value="@application.css" />
                </stylesheets>
@@ -83,7 +83,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="915.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView accessibleRole="BUTTON" fitHeight="48.0" fitWidth="53.0" layoutX="915.0" layoutY="46.0" onMouseClicked="#clickBackScreen" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imgs/93634.png" />
                      </image>
@@ -128,7 +128,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
+            <Button layoutX="992.0" layoutY="46.0" mnemonicParsing="false" onAction="#clickLogoff" prefHeight="41.0" prefWidth="131.0" stylesheets="@application.css" text="Logoff" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

@@ -11,9 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.example.datahealthv2.model.UsuarioProfissional;
 
-public class LoginProfissionalController {
+public class LoginProfissionalController extends BaseController{
 
-    BaseController base = new BaseController();
     UsuarioProfissional user = new UsuarioProfissional();
 
     @FXML
@@ -29,14 +28,14 @@ public class LoginProfissionalController {
     void fazerLogin(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
         String matricula = txtCPFProfissional.getText();
         String senha = txtSenhaProfissional.getText();
-        base.realizarLogin(matricula, senha, "layout_home_logado_profissional.fxml",
+        realizarLogin(matricula, senha, "layout_home_logado_profissional.fxml",
                 ("Tela de Logado Profissional " + matricula), event, user);
     }
 
     @FXML
     void voltarTelaAnterior(MouseEvent event) throws IOException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        base.openNewScreen("layout_home_login.fxml", "Tela Home");
+        openNewScreen("layout_home_login.fxml", "Tela Home");
     }
 
 

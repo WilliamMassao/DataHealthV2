@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class HomeLoginController {
+public class HomeLoginController extends BaseController {
 
     BaseController base = new BaseController();
 
