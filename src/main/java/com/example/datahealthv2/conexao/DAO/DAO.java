@@ -49,8 +49,7 @@ public abstract class DAO<E extends Entidade> {
         return entidade;
     }
 
-    public abstract void Inserir(Usuario paciente) throws SQLException, ClassNotFoundException;
-    public abstract void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException;
+    public abstract void Inserir(Entidade e) throws SQLException, ClassNotFoundException;
 
     protected abstract E preencheEntidade(ResultSet rs);
 
