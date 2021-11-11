@@ -1,6 +1,8 @@
 package com.example.datahealthv2.conexao.DAO.usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import com.example.datahealthv2.conexao.DAO.DAO;
@@ -51,7 +53,30 @@ public class MedicamentoDAO<E extends Entidade> extends DAO {
         }
     }
 
+    public List<Medicamento> Listar() throws SQLException, ClassNotFoundException {
+        ArrayList<Medicamento> medicamentos = new ArrayList<>();
+        Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
+        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = ListarMedicamento();
+            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+                ResultSet resultado = stmt.executeQuery();
+                while (resultado.next()){
+                    Medicamento novoMedicamento = new Medicamento();
+                    novoMedicamento.setId(Integer.parseInt(resultado.getString(1)));
+                    novoMedicamento.setNomeComercial(resultado.getString(2));
+                    novoMedicamento.setNomeGenerico(resultado.getString(3));
+                    novoMedicamento.setLinkBula(resultado.getString(4));
+                    medicamentos.add(novoMedicamento);
+                }
+            }
+        }
+        return  medicamentos;
+    }
+
     protected String InserirMedicamento() {
         return "insert into "+ tabela +" (NomeComercial, NomeGenerico, LinkBula) values (?, ?, ?)";
+    }
+    protected String ListarMedicamento() {
+        return "SELECT * FROM " + tabela;
     }
 }
