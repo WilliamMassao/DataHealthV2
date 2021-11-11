@@ -37,11 +37,8 @@ public class MedicamentoDAO<E extends Entidade> extends DAO {
     }
 
     @Override
-    public void Inserir(Usuario paciente) throws SQLException, ClassNotFoundException {
-    }
-
-    @Override
-    public void Inserir(Medicamento medicamento) throws SQLException, ClassNotFoundException {
+    public void Inserir(Entidade e) throws SQLException, ClassNotFoundException {
+        Medicamento medicamento = (Medicamento) e;
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
         try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = InserirMedicamento();
