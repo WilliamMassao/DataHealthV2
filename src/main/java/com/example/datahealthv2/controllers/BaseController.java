@@ -88,5 +88,23 @@ public class BaseController {
             l.onScreenChanged(newScreen, objectData);
         }
     }
+
+    public Boolean validarCampoVazio(Object objectData, String nomeCampo){
+        Boolean campoVazio = true;
+        if(objectData.toString().isEmpty()){
+            campoVazio = false;
+            openAlert("Erro ao Cadastrar Paciente", "Por favor, insira um valor no campo " + nomeCampo, "", Alert.AlertType.ERROR);
+        }
+        return  campoVazio;
+    }
+
+    public Boolean validaSenhaConfirmacao(String senha, String senhaConfirmacao){
+        Boolean senhaConfirmada = true;
+        if(!senha.equals(senhaConfirmacao)){
+            senhaConfirmada = false;
+            openAlert("Erro ao Cadastrar Paciente", "Senhas divergem, por favor cadastre a mesma senha", "", Alert.AlertType.ERROR);
+        }
+        return  senhaConfirmada;
+    }
 }
 

@@ -34,28 +34,14 @@ public class CadastroPacienteController extends  BaseController{
         user.setEmail(txtEmail.getText());
         user.setTelefone(txtTelefone.getText());
         user.setSenha(txtSenha.getText());
-
         String confirmarSenha = txtConfirmarSenha.getText();
-        dadosValidos = ValidaDados(user,confirmarSenha);
 
-        if(dadosValidos){
+        if(validarCampoVazio(user.getCpf(), "CPF") && validarCampoVazio(user.getNome(), "Nome") &&
+                validarCampoVazio(user.getTipoSanguineo(), "Tipo Sanguíneo") && validarCampoVazio(user.getEmail(), "Email") &&
+                validarCampoVazio(user.getTelefone(), "Telefone") && validarCampoVazio(user.getSenha(), "Senha")
+                && validarCampoVazio(confirmarSenha, "Confirmação Senha") && validaSenhaConfirmacao(user.getSenha(), confirmarSenha) ){
             paciente.Inserir(user);
             openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
         }
-        else
-            openAlert("Erro ao Cadastrar Paciente", "Por favor realize uma nova tentativa", "", Alert.AlertType.ERROR);
-    }
-
-    public boolean ValidaDados( UsuarioPaciente user, String confirmarSenha){
-        Boolean dadosValidos = true;
-        if(user.getNome().isEmpty() || user.getCpf().isEmpty() || user.getTipoSanguineo().isEmpty()
-                || user.getEmail().isEmpty() || user.getTelefone().isEmpty() || user.getSenha().isEmpty() ||
-                confirmarSenha.isEmpty()){
-            dadosValidos = false;
-        }
-        if(!user.getSenha().equals(confirmarSenha))
-            dadosValidos = false;
-
-        return dadosValidos;
     }
 }
