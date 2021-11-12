@@ -49,7 +49,7 @@ public class CadastroMedicamentoController extends BaseController {
     }
 
     @FXML
-    public void clickBackScreen(MouseEvent event) throws IOException {
+    public void clickBackScreen(MouseEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
         openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional", profissional);
     }

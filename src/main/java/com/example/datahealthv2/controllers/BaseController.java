@@ -30,7 +30,7 @@ public class BaseController {
 
     UsuarioProfissional userProfissional = new UsuarioProfissional();
 
-    public void openNewScreen(String fxml, String title, Object objectData) throws IOException {
+    public void openNewScreen(String fxml, String title, Object objectData) throws IOException, SQLException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/layouts/" + fxml));
         stage.setTitle(fxml);
@@ -83,14 +83,14 @@ public class BaseController {
     private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
 
     public static interface onChangeScreen{
-        void onScreenChanged(String newScreen, Object objectData);
+        void onScreenChanged(String newScreen, Object objectData) throws SQLException;
     }
 
     public static void addOnchageScreenListener(onChangeScreen newListener){
         listeners.add(newListener);
     }
 
-    private static void notifyAllListeners (String newScreen, Object objectData){
+    private static void notifyAllListeners (String newScreen, Object objectData) throws SQLException {
         for (onChangeScreen l:listeners){
             l.onScreenChanged(newScreen, objectData);
         }

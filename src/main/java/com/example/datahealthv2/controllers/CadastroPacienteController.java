@@ -1,9 +1,13 @@
 package com.example.datahealthv2.controllers;
 
+import com.example.datahealthv2.conexao.DAO.usuario.MedicamentoDAO;
 import com.example.datahealthv2.conexao.DAO.usuario.PacienteDAO;
 import com.example.datahealthv2.conexao.DAO.usuario.ProfissionalDAO;
+import com.example.datahealthv2.model.Medicamento;
 import com.example.datahealthv2.model.UsuarioPaciente;
 import com.example.datahealthv2.model.UsuarioProfissional;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,18 +20,23 @@ import javafx.scene.input.ScrollEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CadastroPacienteController extends  BaseController{
     @FXML
     private TextField txtCpf, txtNome, txtTipoSanguineo, txtEmail, txtTelefone, txtSenha, txtConfirmarSenha;
 
     @FXML
-    private ComboBox cbxMedicamento;
+    private ComboBox<Medicamento> cbxMedicamento;
+
+    private ObservableList<Medicamento> obsList;
 
     @FXML
     private Button btnLogin;
 
     UsuarioProfissional profissional = new UsuarioProfissional();
+    ArrayList<Medicamento> medicamentos = new ArrayList<>();
+    MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
     @FXML
     public void initialize() {
@@ -35,10 +44,20 @@ public class CadastroPacienteController extends  BaseController{
             @Override
             public void onScreenChanged(String newScreen, Object objectData) {
                 profissional = (UsuarioProfissional) objectData;
+                try {
+                    medicamentos = getMedicamentos();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                obsList = FXCollections.observableArrayList(medicamentos);
+                cbxMedicamento.setItems(obsList);
             }
         });
     }
 
+    private ArrayList<Medicamento> getMedicamentos() throws SQLException {
+        return medicamentoDAO.lista();
+    }
     @FXML
     public void CadastrarPaciente(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Boolean dadosValidos = false;
@@ -67,7 +86,7 @@ public class CadastroPacienteController extends  BaseController{
     }
 
     @FXML
-    public void clickBackScreen(MouseEvent event) throws IOException {
+    public void clickBackScreen(MouseEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
         openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional",profissional);
     }
