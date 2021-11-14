@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,27 @@ public class PacienteDAO<E extends Entidade> extends DAO {
                 stmt.setString(5, paciente.getTelefone());
                 stmt.setString(6, paciente.getSenha());
                 stmt.executeUpdate();
+            }
+        }
+    }
+
+    public void RetornarMedicamentosCadastrados(UsuarioPaciente paciente) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
+        ArrayList<Medicamento> medicamentos = new ArrayList<>();
+        ArrayList<Date> datas = new ArrayList<>();
+        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = getRetornarMedimantos();
+            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+                stmt.setString(1, Integer.toString(paciente.getId()));
+                ResultSet resultado = stmt.executeQuery();
+                while (resultado.next()){
+                    Medicamento novoMedicamento = new Medicamento();
+                    novoMedicamento.setId(Integer.parseInt(resultado.getString(2)));
+                    novoMedicamento.setNomeComercial(resultado.getString(3));
+                    novoMedicamento.setNomeGenerico(resultado.getString(4));
+                    novoMedicamento.setLinkBula(resultado.getString(5));
+                    medicamentos.add(novoMedicamento);
+                }
             }
         }
     }
@@ -108,6 +130,13 @@ public class PacienteDAO<E extends Entidade> extends DAO {
 
     protected String getLocalizarId(){
         return "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'datahealth_db' AND   TABLE_NAME   = 'usuario_paciente'";
+    }
+
+    protected  String getRetornarMedimantos(){
+        return "SELECT Mp.IdPaciente, Mp.IdRemedio, m.NomeComercial, m.NomeGenerico, m.LinkBula, mp.DataPrescricao FROM `usuario_paciente` Up " +
+                "INNER JOIN medicamento_paciente Mp on up.Id = Mp.IdPaciente " +
+                "INNER JOIN medicamento m on m.Id = Mp.IdRemedio " +
+                "Where Mp.IdPaciente = ? ";
     }
 
 }
