@@ -2,7 +2,6 @@ package com.example.datahealthv2.controllers;
 
 import com.example.datahealthv2.conexao.DAO.usuario.MedicamentoDAO;
 import com.example.datahealthv2.conexao.DAO.usuario.PacienteDAO;
-import com.example.datahealthv2.conexao.DAO.usuario.ProfissionalDAO;
 import com.example.datahealthv2.model.Medicamento;
 import com.example.datahealthv2.model.UsuarioPaciente;
 import com.example.datahealthv2.model.UsuarioProfissional;
@@ -16,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,15 +25,16 @@ public class CadastroPacienteController extends  BaseController{
     private TextField txtCpf, txtNome, txtTipoSanguineo, txtEmail, txtTelefone, txtSenha, txtConfirmarSenha;
 
     @FXML
-    private ComboBox<Medicamento> cbxMedicamento;
+    private ComboBox<String> cbxMedicamento;
 
-    private ObservableList<Medicamento> obsList;
+    private ObservableList<String> obsList;
 
     @FXML
     private Button btnLogin;
 
     UsuarioProfissional profissional = new UsuarioProfissional();
     ArrayList<Medicamento> medicamentos = new ArrayList<>();
+    ArrayList<String> nomeMedicamentos = new ArrayList<>();
     MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
     @FXML
@@ -49,7 +48,10 @@ public class CadastroPacienteController extends  BaseController{
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                obsList = FXCollections.observableArrayList(medicamentos);
+                for (Medicamento medicamento:medicamentos) {
+                    nomeMedicamentos.add(medicamento.getNomeGenerico());
+                }
+                obsList = FXCollections.observableArrayList(nomeMedicamentos);
                 cbxMedicamento.setItems(obsList);
             }
         });

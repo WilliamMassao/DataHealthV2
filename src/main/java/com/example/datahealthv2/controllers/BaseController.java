@@ -30,7 +30,7 @@ public class BaseController {
 
     UsuarioProfissional userProfissional = new UsuarioProfissional();
 
-    public void openNewScreen(String fxml, String title, Object objectData) throws IOException, SQLException {
+    public void openNewScreen(String fxml, String title, Object objectData) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/layouts/" + fxml));
         stage.setTitle(fxml);
@@ -48,6 +48,7 @@ public class BaseController {
         stage.setTitle(title);
         stage.show();
         notifyAllListeners(title, null);
+
     }
 
 
@@ -59,16 +60,15 @@ public class BaseController {
         alert.showAndWait();
     }
 
-    public void realizarLogin(String login, String senha, String fxml, String nextTitle, ActionEvent event, Usuario user) throws ClassNotFoundException, SQLException, IOException{
+    public void realizarLogin(String login, String senha, String fxml, String nextTitle, ActionEvent event, Usuario user) throws ClassNotFoundException, SQLException, IOException {
         user.setCpf(login);
         user.setSenha(senha);
         Boolean senhaValida = acesso.validaUsuario(user);
 
-        if(senhaValida.equals(true)){
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+        if (senhaValida.equals(true)) {
+            ((Node) (event.getSource())).getScene().getWindow().hide();
             openNewScreen(fxml, nextTitle, acesso.retornaUsuario(user));
-        }
-        else{
+        } else {
             openAlert("Erro ao Realizar Login", "Por favor realize uma nova tentativa", "", AlertType.ERROR);
         }
 
@@ -82,62 +82,65 @@ public class BaseController {
     // Enviar parâmetros para outras telas
     private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
 
-    public static interface onChangeScreen{
+    public static interface onChangeScreen {
         void onScreenChanged(String newScreen, Object objectData) throws SQLException;
     }
 
-    public static void addOnchageScreenListener(onChangeScreen newListener){
+    public static void addOnchageScreenListener(onChangeScreen newListener) {
         listeners.add(newListener);
     }
 
-    private static void notifyAllListeners (String newScreen, Object objectData) throws SQLException {
-        for (onChangeScreen l:listeners){
-            l.onScreenChanged(newScreen, objectData);
+    private static void notifyAllListeners(String newScreen, Object objectData) {
+        for (onChangeScreen l : listeners) {
+            try {
+                l.onScreenChanged(newScreen, objectData);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     // Validações dos Campos
-    public Boolean validarCampoVazio(Object objectData, String nomeCampo){
+    public Boolean validarCampoVazio(Object objectData, String nomeCampo) {
         Boolean campoVazio = true;
-        if(objectData.toString().isEmpty()){
+        if (objectData.toString().isEmpty()) {
             campoVazio = false;
             openAlert("Erro ao Cadastrar Paciente", "Por favor, insira um valor no campo " + nomeCampo, "", Alert.AlertType.ERROR);
         }
-        return  campoVazio;
+        return campoVazio;
     }
 
-    public Boolean validaSenhaConfirmacao(String senha, String senhaConfirmacao){
+    public Boolean validaSenhaConfirmacao(String senha, String senhaConfirmacao) {
         Boolean senhaConfirmada = true;
-        if(!senha.equals(senhaConfirmacao)){
+        if (!senha.equals(senhaConfirmacao)) {
             senhaConfirmada = false;
             openAlert("Erro ao Cadastrar Paciente", "Senhas divergem, por favor cadastre a mesma senha", "", Alert.AlertType.ERROR);
         }
-        return  senhaConfirmada;
+        return senhaConfirmada;
     }
 
-    public static boolean validarCPF (String cpf)
-    {
+    public static boolean validarCPF(String cpf) {
         String regex = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}";
         Pattern p = Pattern.compile(regex);
         if (cpf == null) {
             return false;
         }
         Matcher m = p.matcher(cpf);
-        if(!m.matches()){
+        if (!m.matches()) {
             openAlert("Erro ao Cadastrar Paciente", "CPF Inválido", "", Alert.AlertType.ERROR);
         }
         return m.matches();
     }
 
-    public static boolean validarCPFExistente (Usuario user){
+    public static boolean validarCPFExistente(Usuario user) {
         boolean cpfNaoExistente = true;
         user.setCpf(user.getCpf().replaceAll("\\.", "").replaceAll("-", ""));
         try {
-             if (!acesso.retornaUsuario(user).getCpf().equals("")){
-                 openAlert("Erro ao Cadastrar Paciente", "CPF já cadastrado", "", Alert.AlertType.ERROR);
-                 cpfNaoExistente = false;
-             }
-        }catch (Exception e){
+            if (!acesso.retornaUsuario(user).getCpf().equals("")) {
+                openAlert("Erro ao Cadastrar Paciente", "CPF já cadastrado", "", Alert.AlertType.ERROR);
+                cpfNaoExistente = false;
+            }
+        } catch (Exception e) {
             cpfNaoExistente = true;
         }
         return cpfNaoExistente;
