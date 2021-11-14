@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.model.Entidade;
@@ -56,6 +59,41 @@ public class PacienteDAO<E extends Entidade> extends DAO {
         }
     }
 
+    public   void InserirPacienteMedicamento(Medicamento listaMedicamento) throws ClassNotFoundException, SQLException {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+
+        Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
+        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = getInserirMedicamentoPaciente();
+            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+                stmt.setInt(1, CapturarIdUltimoPaciente() - 1);
+                stmt.setInt(2, listaMedicamento.getId());
+                stmt.setString(3, date);
+                stmt.setString(4, "");
+                stmt.setString(5, "");
+
+                stmt.executeUpdate();
+            }
+        }
+    }
+
+    protected  Integer CapturarIdUltimoPaciente() throws SQLException, ClassNotFoundException {
+        Integer id = 0;
+        Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
+        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = getLocalizarId();
+            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+                ResultSet resultado = stmt.executeQuery();
+                while (resultado.next()) {
+                    id = Integer.parseInt(resultado.getString(1));
+                }
+            }
+        }
+        return id;
+    }
+
     @Override
     protected String getLocalizaCommand() {
         return "select * from usuario_paciente where Cpf = ? ";
@@ -64,6 +102,12 @@ public class PacienteDAO<E extends Entidade> extends DAO {
     protected String getInserirPaciente() {
         return "insert into "+ tabela +" (Nome, Cpf, TipoSanguineo, Email, Telefone, Senha) values (?, ?, ?, ?, ?, ?)";
     }
+    protected String getInserirMedicamentoPaciente() {
+        return "INSERT INTO `medicamento_paciente`(`IdPaciente`, `IdRemedio`, `DataPrescricao`, `Dosagem`, `Recorrencia`) values (?, ?, ?, ?, ?)";
+    }
 
+    protected String getLocalizarId(){
+        return "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'datahealth_db' AND   TABLE_NAME   = 'usuario_paciente'";
+    }
 
 }
