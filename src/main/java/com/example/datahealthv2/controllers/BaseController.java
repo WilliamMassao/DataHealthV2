@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
-import com.example.datahealthv2.model.UsuarioProfissional;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import com.example.datahealthv2.login.Acesso;
 import com.example.datahealthv2.model.Usuario;
 import com.example.datahealthv2.model.UsuarioPaciente;
+import com.example.datahealthv2.model.UsuarioProfissional;
 
 
 public class BaseController {
@@ -40,7 +41,7 @@ public class BaseController {
         notifyAllListeners(title, objectData);
     }
 
-    public void openNewScreen(String fxml, String title) throws IOException {
+    public void openNewScreen(String fxml, String title) throws IOException, SQLException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/layouts/" + fxml));
         stage.setTitle(fxml);
@@ -74,7 +75,7 @@ public class BaseController {
 
     }
 
-    public void clickLogoff(ActionEvent event) throws IOException {
+    public void clickLogoff(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
         openNewScreen("layout_home_login.fxml", "Tela Home");
     }

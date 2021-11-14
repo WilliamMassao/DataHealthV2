@@ -33,7 +33,7 @@ public class LoginProfissionalController extends BaseController{
     }
 
     @FXML
-    void voltarTelaAnterior(MouseEvent event) throws IOException {
+    void voltarTelaAnterior(MouseEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
         openNewScreen("layout_home_login.fxml", "Tela Home");
     }
