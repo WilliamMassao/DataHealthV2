@@ -4,6 +4,7 @@ public class Medicamento extends Entidade{
     String NomeComercial;
     String NomeGenerico;
     String LinkBula;
+    String Data;
 
     public Medicamento(String nomeComercial, String nomeGenerico, String linkBula){
         this.NomeComercial = nomeComercial;
@@ -37,4 +38,13 @@ public class Medicamento extends Entidade{
     public void setLinkBula(String LinkBula) {
         this.LinkBula = LinkBula;
     }
+
+    public String getData() {
+        return this.Data;
+    }
+
+    public void setData(String Data) {
+        this.Data = Data;
+    }
+
 }

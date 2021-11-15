@@ -75,6 +75,7 @@ public class PacienteDAO<E extends Entidade> extends DAO {
                     novoMedicamento.setNomeComercial(resultado.getString(3));
                     novoMedicamento.setNomeGenerico(resultado.getString(4));
                     novoMedicamento.setLinkBula(resultado.getString(5));
+                    novoMedicamento.setData(resultado.getString(6));
                     medicamentos.add(novoMedicamento);
                 }
             }
