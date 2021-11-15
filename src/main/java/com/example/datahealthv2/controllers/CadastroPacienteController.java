@@ -20,6 +20,7 @@ import org.controlsfx.control.CheckComboBox;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CadastroPacienteController extends  BaseController{
     @FXML
@@ -87,8 +88,8 @@ public class CadastroPacienteController extends  BaseController{
                 && validarCPFExistente(userCreated)){
             userCreated.setCpf(txtCpf.getText().replaceAll("\\.", "").replaceAll("-", ""));
             paciente.Inserir(userCreated);
-            paciente.InserirPacienteMedicamento((Medicamento) cbxMedicamento.getCheckModel().getCheckedItems());
-            openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
+            inserirMedicamentosParaPaciente(cbxMedicamento, medicamentos);
+            openAlert("Paciente Cadastrado", "Paciente Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
         }
 
     }

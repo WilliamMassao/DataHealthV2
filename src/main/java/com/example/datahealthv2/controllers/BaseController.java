@@ -3,11 +3,14 @@ package com.example.datahealthv2.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.example.datahealthv2.conexao.DAO.DAO;
+import com.example.datahealthv2.conexao.DAO.usuario.PacienteDAO;
 import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
+import com.example.datahealthv2.model.Medicamento;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -21,11 +24,14 @@ import com.example.datahealthv2.login.Acesso;
 import com.example.datahealthv2.model.Usuario;
 import com.example.datahealthv2.model.UsuarioPaciente;
 import com.example.datahealthv2.model.UsuarioProfissional;
+import org.controlsfx.control.CheckComboBox;
 
 
 public class BaseController {
 
     UsuarioPaciente user = new UsuarioPaciente();
+
+    PacienteDAO paciente = new PacienteDAO();
 
     static Acesso acesso = new Acesso();
 
@@ -145,6 +151,13 @@ public class BaseController {
             cpfNaoExistente = true;
         }
         return cpfNaoExistente;
+    }
+
+    public  void inserirMedicamentosParaPaciente(CheckComboBox cbxMedicamento, ArrayList<Medicamento> medicamentos) throws SQLException, ClassNotFoundException {
+        List<Integer> listaSelecionados = cbxMedicamento.getCheckModel().getCheckedIndices();
+        for (int cont = 0; cont<listaSelecionados.size(); cont++){
+            paciente.InserirPacienteMedicamento(medicamentos.get(listaSelecionados.get(cont)));
+        }
     }
 }
 
