@@ -15,19 +15,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.CheckComboBox;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CadastroPacienteController extends  BaseController{
     @FXML
     private TextField txtCpf, txtNome, txtTipoSanguineo, txtEmail, txtTelefone, txtSenha, txtConfirmarSenha;
 
+//    @FXML
+//    private ComboBox<String> cbxMedicamento;
     @FXML
-    private ComboBox<String> cbxMedicamento;
+    private CheckComboBox cbxMedicamento;
 
     private ObservableList<String> obsList;
+
+
 
     @FXML
     private Button btnLogin;
@@ -52,7 +58,7 @@ public class CadastroPacienteController extends  BaseController{
                     nomeMedicamentos.add(medicamento.getNomeGenerico());
                 }
                 obsList = FXCollections.observableArrayList(nomeMedicamentos);
-                cbxMedicamento.setItems(obsList);
+                cbxMedicamento.getItems().addAll(obsList);
             }
         });
     }
@@ -82,7 +88,8 @@ public class CadastroPacienteController extends  BaseController{
                 && validarCPFExistente(userCreated)){
             userCreated.setCpf(txtCpf.getText().replaceAll("\\.", "").replaceAll("-", ""));
             paciente.Inserir(userCreated);
-            openAlert("Paciente Cadastrado", "Profissional Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
+            inserirMedicamentosParaPaciente(cbxMedicamento, medicamentos);
+            openAlert("Paciente Cadastrado", "Paciente Cadastrado com Sucesso!", "", Alert.AlertType.INFORMATION);
         }
 
     }
