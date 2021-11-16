@@ -1,21 +1,14 @@
 package com.example.datahealthv2.conexao.DAO.usuario;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.model.Entidade;
 import com.example.datahealthv2.model.Medicamento;
-import com.example.datahealthv2.model.Usuario;
 import com.example.datahealthv2.model.UsuarioPaciente;
+
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class PacienteDAO<E extends Entidade> extends DAO {
 
@@ -44,9 +37,9 @@ public class PacienteDAO<E extends Entidade> extends DAO {
 
     @Override
     public void Inserir(Entidade e) throws SQLException, ClassNotFoundException {
-        UsuarioPaciente paciente = (UsuarioPaciente)e;
+        UsuarioPaciente paciente = (UsuarioPaciente) e;
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
-        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = getInserirPaciente();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setString(1, paciente.getNome());
@@ -60,16 +53,15 @@ public class PacienteDAO<E extends Entidade> extends DAO {
         }
     }
 
-    public void RetornarMedicamentosCadastrados(UsuarioPaciente paciente) throws SQLException, ClassNotFoundException {
+    public ArrayList<Medicamento> RetornarMedicamentosCadastrados(UsuarioPaciente paciente) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
         ArrayList<Medicamento> medicamentos = new ArrayList<>();
-        ArrayList<Date> datas = new ArrayList<>();
-        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = getRetornarMedimantos();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setString(1, Integer.toString(paciente.getId()));
                 ResultSet resultado = stmt.executeQuery();
-                while (resultado.next()){
+                while (resultado.next()) {
                     Medicamento novoMedicamento = new Medicamento();
                     novoMedicamento.setId(Integer.parseInt(resultado.getString(2)));
                     novoMedicamento.setNomeComercial(resultado.getString(3));
@@ -80,15 +72,16 @@ public class PacienteDAO<E extends Entidade> extends DAO {
                 }
             }
         }
+        return medicamentos;
     }
 
-    public   void InserirPacienteMedicamento(Medicamento listaMedicamento) throws ClassNotFoundException, SQLException {
+    public void InserirPacienteMedicamento(Medicamento listaMedicamento) throws ClassNotFoundException, SQLException {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String date = simpleDateFormat.format(new Date());
 
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
-        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = getInserirMedicamentoPaciente();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setInt(1, CapturarIdUltimoPaciente() - 1);
@@ -102,10 +95,10 @@ public class PacienteDAO<E extends Entidade> extends DAO {
         }
     }
 
-    protected  Integer CapturarIdUltimoPaciente() throws SQLException, ClassNotFoundException {
+    protected Integer CapturarIdUltimoPaciente() throws SQLException, ClassNotFoundException {
         Integer id = 0;
         Class.forName("com.mysql.jdbc.Driver"); /* Aqui registra */
-        try (Connection conexao = (Connection) DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL = getLocalizarId();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 ResultSet resultado = stmt.executeQuery();
@@ -123,17 +116,18 @@ public class PacienteDAO<E extends Entidade> extends DAO {
     }
 
     protected String getInserirPaciente() {
-        return "insert into "+ tabela +" (Nome, Cpf, TipoSanguineo, Email, Telefone, Senha) values (?, ?, ?, ?, ?, ?)";
+        return "insert into " + tabela + " (Nome, Cpf, TipoSanguineo, Email, Telefone, Senha) values (?, ?, ?, ?, ?, ?)";
     }
+
     protected String getInserirMedicamentoPaciente() {
         return "INSERT INTO `medicamento_paciente`(`IdPaciente`, `IdRemedio`, `DataPrescricao`, `Dosagem`, `Recorrencia`) values (?, ?, ?, ?, ?)";
     }
 
-    protected String getLocalizarId(){
+    protected String getLocalizarId() {
         return "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'datahealth_db' AND   TABLE_NAME   = 'usuario_paciente'";
     }
 
-    protected  String getRetornarMedimantos(){
+    protected String getRetornarMedimantos() {
         return "SELECT Mp.IdPaciente, Mp.IdRemedio, m.NomeComercial, m.NomeGenerico, m.LinkBula, mp.DataPrescricao FROM `usuario_paciente` Up " +
                 "INNER JOIN medicamento_paciente Mp on up.Id = Mp.IdPaciente " +
                 "INNER JOIN medicamento m on m.Id = Mp.IdRemedio " +

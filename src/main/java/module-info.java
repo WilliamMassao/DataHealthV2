@@ -11,6 +11,9 @@ module com.example.datahealthv2 {
     requires eu.hansolo.tilesfx;
     requires java.sql;
 
-    opens com.example.datahealthv2.controllers to javafx.fxml;
+    opens com.example.datahealthv2.controllers to javafx.fxml,javafx.base;
+    opens com.example.datahealthv2.model to javafx.base;
     exports com.example.datahealthv2;
+
+
 }

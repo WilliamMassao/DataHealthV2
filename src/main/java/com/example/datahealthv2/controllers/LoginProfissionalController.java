@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.example.datahealthv2.model.UsuarioProfissional;
@@ -22,7 +23,7 @@ public class LoginProfissionalController extends BaseController{
     private TextField txtCPFProfissional;
 
     @FXML
-    private TextField txtSenhaProfissional;
+    private PasswordField txtSenhaProfissional;
 
     @FXML
     void fazerLogin(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
