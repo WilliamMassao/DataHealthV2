@@ -35,8 +35,6 @@ public class BaseController {
 
     static Acesso acesso = new Acesso();
 
-    UsuarioProfissional userProfissional = new UsuarioProfissional();
-
     public void openNewScreen(String fxml, String title, Object objectData) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/layouts/" + fxml));
@@ -89,7 +87,7 @@ public class BaseController {
     // Enviar parâmetros para outras telas
     private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
 
-    public static interface onChangeScreen {
+    public interface onChangeScreen {
         void onScreenChanged(String newScreen, Object objectData) throws SQLException;
     }
 

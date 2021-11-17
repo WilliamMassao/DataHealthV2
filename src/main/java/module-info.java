@@ -10,10 +10,12 @@ module com.example.datahealthv2 {
 //    requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires junit;
 
     opens com.example.datahealthv2.controllers to javafx.fxml,javafx.base;
     opens com.example.datahealthv2.model to javafx.base;
     exports com.example.datahealthv2;
+    exports com.example.datahealthv2.login;
 
 
 }
