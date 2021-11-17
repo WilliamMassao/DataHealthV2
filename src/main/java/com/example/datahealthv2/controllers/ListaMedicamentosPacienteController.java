@@ -23,7 +23,7 @@ public class ListaMedicamentosPacienteController extends BaseController implemen
     ObservableList<Medicamento> obsList;
 
     @FXML
-    private Label lblNomePaciente ;
+    private Label lblNomePaciente;
 
     @FXML
     private TableView<Medicamento> tbMedicamento = new TableView<>();
@@ -74,7 +74,6 @@ public class ListaMedicamentosPacienteController extends BaseController implemen
                 new PropertyValueFactory<>("Data"));
 
         tbMedicamento.getItems().addAll(obsList);
-        //tbMedicamento.setItems(obsList);
 
     }
 

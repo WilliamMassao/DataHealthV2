@@ -1,38 +1,24 @@
 package com.example.datahealthv2.controllers;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class HomeLoginController extends BaseController {
 
-    BaseController base = new BaseController();
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    // @FXML
-    // private Button btnConvidado;
-
-    // @FXML
-    // private Button btnProfissional;
 
     @FXML
     void switchToLoginPaciente(ActionEvent event) throws IOException, SQLException {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-        base.openNewScreen("layout_login_paciente.fxml", "Tela de Login Paciente");
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        openNewScreen("layout_login_paciente.fxml", "Tela de Login Paciente");
     }
 
     @FXML
     void switchToLoginProfissional(ActionEvent event) throws IOException, SQLException {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-        base.openNewScreen("layout_login_profissional.fxml", "Tela de Login Profissional");
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        openNewScreen("layout_login_profissional.fxml", "Tela de Login Profissional");
     }
 }

@@ -1,17 +1,10 @@
 package com.example.datahealthv2.controllers;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.example.datahealthv2.conexao.DAO.DAO;
 import com.example.datahealthv2.conexao.DAO.usuario.PacienteDAO;
-import com.example.datahealthv2.conexao.DAO.usuario.UsuarioDAOFactory;
+import com.example.datahealthv2.login.Acesso;
 import com.example.datahealthv2.model.Medicamento;
-import javafx.application.Application;
+import com.example.datahealthv2.model.Usuario;
+import com.example.datahealthv2.model.UsuarioPaciente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,11 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import com.example.datahealthv2.login.Acesso;
-import com.example.datahealthv2.model.Usuario;
-import com.example.datahealthv2.model.UsuarioPaciente;
-import com.example.datahealthv2.model.UsuarioProfissional;
 import org.controlsfx.control.CheckComboBox;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class BaseController {
@@ -84,7 +80,6 @@ public class BaseController {
         openNewScreen("layout_home_login.fxml", "Tela Home");
     }
 
-    // Enviar parâmetros para outras telas
     private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
 
     public interface onChangeScreen {
@@ -105,7 +100,6 @@ public class BaseController {
         }
     }
 
-    // Validações dos Campos
     public Boolean validarCampoVazio(Object objectData, String nomeCampo) {
         Boolean campoVazio = true;
         if (objectData.toString().isEmpty()) {
@@ -151,9 +145,9 @@ public class BaseController {
         return cpfNaoExistente;
     }
 
-    public  void inserirMedicamentosParaPaciente(CheckComboBox cbxMedicamento, ArrayList<Medicamento> medicamentos) throws SQLException, ClassNotFoundException {
+    public void inserirMedicamentosParaPaciente(CheckComboBox cbxMedicamento, ArrayList<Medicamento> medicamentos) throws SQLException, ClassNotFoundException {
         List<Integer> listaSelecionados = cbxMedicamento.getCheckModel().getCheckedIndices();
-        for (int cont = 0; cont<listaSelecionados.size(); cont++){
+        for (int cont = 0; cont < listaSelecionados.size(); cont++) {
             paciente.InserirPacienteMedicamento(medicamentos.get(listaSelecionados.get(cont)));
         }
     }

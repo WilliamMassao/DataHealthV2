@@ -1,23 +1,19 @@
 package com.example.datahealthv2.controllers;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
+import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import com.example.datahealthv2.model.UsuarioProfissional;
 
-public class LoginProfissionalController extends BaseController{
+import java.io.IOException;
+import java.sql.SQLException;
+
+public class LoginProfissionalController extends BaseController {
 
     UsuarioProfissional user = new UsuarioProfissional();
-
-    @FXML
-    private Button btnLogin;
 
     @FXML
     private TextField txtCPFProfissional;

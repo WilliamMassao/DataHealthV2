@@ -2,7 +2,6 @@ package com.example.datahealthv2.controllers;
 
 import com.example.datahealthv2.conexao.DAO.usuario.MedicamentoDAO;
 import com.example.datahealthv2.model.Medicamento;
-import com.example.datahealthv2.model.UsuarioPaciente;
 import com.example.datahealthv2.model.UsuarioProfissional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +31,7 @@ public class CadastroMedicamentoController extends BaseController {
     private TextField txtNomeComercial, txtLinkBula, txtNomeGenerico;
 
     public void CadastrarMedicamento(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Boolean dadosValidos = false;
+
         MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
         Medicamento medicamento = new Medicamento();

@@ -1,17 +1,16 @@
 package com.example.datahealthv2.model;
 
 import com.example.datahealthv2.conexao.annotations.CampoNoBanco;
-import  com.example.datahealthv2.model.Entidade;
 
 public abstract class Usuario extends Entidade {
 
-    @CampoNoBanco(nome="Nome", chave = false)
+    @CampoNoBanco(nome = "Nome", chave = false)
     public String Nome;
 
-    @CampoNoBanco(nome="Cpf", chave = false)
+    @CampoNoBanco(nome = "Cpf", chave = false)
     public String Cpf;
 
-    @CampoNoBanco(nome="Senha", chave = false)
+    @CampoNoBanco(nome = "Senha", chave = false)
     public String Senha;
 
 

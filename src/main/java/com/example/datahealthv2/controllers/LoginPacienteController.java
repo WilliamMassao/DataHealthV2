@@ -1,24 +1,17 @@
 package com.example.datahealthv2.controllers;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import com.example.datahealthv2.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import com.example.datahealthv2.login.Acesso;
-import com.example.datahealthv2.model.UsuarioPaciente;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class LoginPacienteController extends BaseController {
-
-    @FXML
-    private Button btnLogin;
 
     @FXML
     private TextField txtCPFPaciente;
@@ -37,9 +30,8 @@ public class LoginPacienteController extends BaseController {
     @FXML
     void voltarTelaAnterior(MouseEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-       openNewScreen("layout_home_login.fxml", "Tela Home");
+        openNewScreen("layout_home_login.fxml", "Tela Home");
     }
-
 
 
 }

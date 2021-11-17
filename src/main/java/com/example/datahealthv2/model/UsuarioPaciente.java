@@ -1,28 +1,28 @@
 package com.example.datahealthv2.model;
 
-import java.util.ArrayList;
 import com.example.datahealthv2.conexao.annotations.CampoNoBanco;
 
-public class UsuarioPaciente extends Usuario{
+import java.util.ArrayList;
 
-    @CampoNoBanco(nome="TipoSanguineo", chave = false)
+public class UsuarioPaciente extends Usuario {
+
+    @CampoNoBanco(nome = "TipoSanguineo", chave = false)
     String TipoSanguineo;
 
-    @CampoNoBanco(nome="Email", chave = false)
+    @CampoNoBanco(nome = "Email", chave = false)
     String Email;
 
-    @CampoNoBanco(nome="Telefone", chave = false)
+    @CampoNoBanco(nome = "Telefone", chave = false)
     String Telefone;
 
     ArrayList<Medicamento> Remedios;
 
-    public UsuarioPaciente(){
+    public UsuarioPaciente() {
 
     }
 
     public UsuarioPaciente(String nome, String cpf, String senha, String tipoSanguineo,
-                           String email, String telefone)
-    {
+                           String email, String telefone) {
         this.Nome = nome;
         this.Cpf = cpf;
         this.Senha = senha;
@@ -46,6 +46,7 @@ public class UsuarioPaciente extends Usuario{
     public void setTelefone(String telefone) {
         this.Telefone = telefone;
     }
+
     public String getTipoSanguineo() {
         return this.TipoSanguineo;
     }

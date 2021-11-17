@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class HomeProfissionalLogadoController extends BaseController{
+public class HomeProfissionalLogadoController extends BaseController {
 
     @FXML
     private Label lblNomeProfissional;
@@ -32,20 +32,21 @@ public class HomeProfissionalLogadoController extends BaseController{
     @FXML
     public void cadastrarPaciente(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_cadastro_paciente.fxml", "Cadastro Paciente",user);
+        openNewScreen("layout_cadastro_paciente.fxml", "Cadastro Paciente", user);
     }
 
     @FXML
     public void cadastrarMedicamentos(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_cadastro_medicamentos.fxml", "Cadastro Medicamentos",user);
+        openNewScreen("layout_cadastro_medicamentos.fxml", "Cadastro Medicamentos", user);
     }
 
     @FXML
     public void cadastrarProfissionais(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_cadastro_profissional.fxml", "Cadastro Profissional",user);
+        openNewScreen("layout_cadastro_profissional.fxml", "Cadastro Profissional", user);
     }
+
     @FXML
     public void clickLogoff(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();

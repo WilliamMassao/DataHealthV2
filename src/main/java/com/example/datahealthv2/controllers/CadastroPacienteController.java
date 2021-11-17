@@ -11,8 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.CheckComboBox;
@@ -20,28 +18,19 @@ import org.controlsfx.control.CheckComboBox;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class CadastroPacienteController extends  BaseController{
+public class CadastroPacienteController extends BaseController {
     @FXML
     private TextField txtCpf, txtNome, txtTipoSanguineo, txtEmail, txtTelefone, txtSenha, txtConfirmarSenha;
 
-//    @FXML
-//    private ComboBox<String> cbxMedicamento;
     @FXML
     private CheckComboBox cbxMedicamento;
 
     private ObservableList<String> obsList;
-
-
-
-    @FXML
-    private Button btnLogin;
-
-    UsuarioProfissional profissional = new UsuarioProfissional();
-    ArrayList<Medicamento> medicamentos = new ArrayList<>();
-    ArrayList<String> nomeMedicamentos = new ArrayList<>();
-    MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
+    private UsuarioProfissional profissional = new UsuarioProfissional();
+    private ArrayList<Medicamento> medicamentos = new ArrayList<>();
+    private ArrayList<String> nomeMedicamentos = new ArrayList<>();
+    private MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
     @FXML
     public void initialize() {
@@ -54,7 +43,7 @@ public class CadastroPacienteController extends  BaseController{
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                for (Medicamento medicamento:medicamentos) {
+                for (Medicamento medicamento : medicamentos) {
                     nomeMedicamentos.add(medicamento.getNomeGenerico());
                 }
                 obsList = FXCollections.observableArrayList(nomeMedicamentos);
@@ -66,9 +55,10 @@ public class CadastroPacienteController extends  BaseController{
     private ArrayList<Medicamento> getMedicamentos() throws SQLException {
         return medicamentoDAO.lista();
     }
+
     @FXML
     public void CadastrarPaciente(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Boolean dadosValidos = false;
+
         PacienteDAO paciente = new PacienteDAO();
         UsuarioPaciente userCreated = new UsuarioPaciente();
 
@@ -81,11 +71,11 @@ public class CadastroPacienteController extends  BaseController{
 
         String confirmarSenha = txtConfirmarSenha.getText();
 
-        if(validarCampoVazio(userCreated.getCpf(), "CPF") && validarCampoVazio(userCreated.getNome(), "Nome") &&
+        if (validarCampoVazio(userCreated.getCpf(), "CPF") && validarCampoVazio(userCreated.getNome(), "Nome") &&
                 validarCampoVazio(userCreated.getTipoSanguineo(), "Tipo Sanguíneo") && validarCampoVazio(userCreated.getEmail(), "Email") &&
                 validarCampoVazio(userCreated.getTelefone(), "Telefone") && validarCampoVazio(userCreated.getSenha(), "Senha")
                 && validarCampoVazio(confirmarSenha, "Confirmação Senha") && validaSenhaConfirmacao(userCreated.getSenha(), confirmarSenha) && validarCPF(userCreated.getCpf())
-                && validarCPFExistente(userCreated)){
+                && validarCPFExistente(userCreated)) {
             userCreated.setCpf(txtCpf.getText().replaceAll("\\.", "").replaceAll("-", ""));
             paciente.Inserir(userCreated);
             inserirMedicamentosParaPaciente(cbxMedicamento, medicamentos);
@@ -97,6 +87,6 @@ public class CadastroPacienteController extends  BaseController{
     @FXML
     public void clickBackScreen(MouseEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional",profissional);
+        openNewScreen("layout_home_logado_profissional.fxml", "Home Profissional", profissional);
     }
 }

@@ -2,20 +2,19 @@ package com.example.datahealthv2.model;
 
 import com.example.datahealthv2.conexao.annotations.CampoNoBanco;
 
-public class UsuarioProfissional extends Usuario{
+public class UsuarioProfissional extends Usuario {
 
-    @CampoNoBanco(nome="Matricula", chave = false)
+    @CampoNoBanco(nome = "Matricula", chave = false)
     String Matricula;
 
-    @CampoNoBanco(nome="Cargo", chave = false)
+    @CampoNoBanco(nome = "Cargo", chave = false)
     String Cargo;
 
-    @CampoNoBanco(nome="RegistroProfissional", chave = false)
+    @CampoNoBanco(nome = "RegistroProfissional", chave = false)
     String RegistroProfissional;
 
     public UsuarioProfissional(String nome, String cpf, String senha,
-                               String matricula, String cargo, String registroProfissional )
-    {
+                               String matricula, String cargo, String registroProfissional) {
         this.Nome = nome;
         this.Senha = senha;
         this.Cpf = cpf;
@@ -25,10 +24,6 @@ public class UsuarioProfissional extends Usuario{
     }
 
     public UsuarioProfissional() {
-    }
-
-    public enum Cargo {
-        MEDICO, ENFERMEIRO
     }
 
     public String getMatricula() {
@@ -43,7 +38,7 @@ public class UsuarioProfissional extends Usuario{
         return this.Cargo;
     }
 
-    public void setCargo(String cargo ) {
+    public void setCargo(String cargo) {
         this.Cargo = cargo;
     }
 

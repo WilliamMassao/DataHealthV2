@@ -1,15 +1,9 @@
 package com.example.datahealthv2.conexao.DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import com.example.datahealthv2.model.Entidade;
-import com.example.datahealthv2.model.Medicamento;
-import com.example.datahealthv2.model.Usuario;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public abstract class DAO<E extends Entidade> {
 
@@ -25,11 +19,6 @@ public abstract class DAO<E extends Entidade> {
 
     protected void setTabela(String value) {
         tabela = value;
-    }
-
-    public E seleciona(int id) {
-        // Não há retorno por id
-        return null;
     }
 
     public E localiza(String codigo) throws SQLException, ClassNotFoundException {
@@ -77,12 +66,4 @@ public abstract class DAO<E extends Entidade> {
 
     protected abstract String getLocalizaCommand();
 
-    protected E getInstanceOfE() {
-        try {
-            return entityClass.newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
-            // Oops, no default constructor
-            throw new RuntimeException(e);
-        }
-    }
 }
