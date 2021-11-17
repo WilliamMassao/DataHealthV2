@@ -43,6 +43,7 @@ public class ListaMedicamentosPacienteController extends BaseController implemen
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("TESTEEE");
         addOnchageScreenListener(new onChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object objectData) {

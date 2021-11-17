@@ -60,14 +60,8 @@ public class CadastroPacienteController extends BaseController {
     public void CadastrarPaciente(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
         PacienteDAO paciente = new PacienteDAO();
-        UsuarioPaciente userCreated = new UsuarioPaciente();
-
-        userCreated.setCpf(txtCpf.getText());
-        userCreated.setNome(txtNome.getText());
-        userCreated.setTipoSanguineo(txtTipoSanguineo.getText());
-        userCreated.setEmail(txtEmail.getText());
-        userCreated.setTelefone(txtTelefone.getText());
-        userCreated.setSenha(txtSenha.getText());
+        UsuarioPaciente userCreated = new UsuarioPaciente(txtNome.getText(), txtCpf.getText(), txtSenha.getText(), txtTipoSanguineo.getText(),
+                txtEmail.getText(), txtTelefone.getText());
 
         String confirmarSenha = txtConfirmarSenha.getText();
 

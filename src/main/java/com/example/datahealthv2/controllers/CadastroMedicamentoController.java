@@ -34,10 +34,7 @@ public class CadastroMedicamentoController extends BaseController {
 
         MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
-        Medicamento medicamento = new Medicamento();
-        medicamento.setLinkBula(txtLinkBula.getText());
-        medicamento.setNomeComercial(txtNomeComercial.getText());
-        medicamento.setNomeGenerico(txtNomeGenerico.getText());
+        Medicamento medicamento = new Medicamento(txtNomeComercial.getText(), txtNomeGenerico.getText(), txtLinkBula.getText());
 
         if (validarCampoVazio(medicamento.getLinkBula(), "Link da Bula")
                 && validarCampoVazio(medicamento.getNomeComercial(), "Nome Comercial do Medicamento")

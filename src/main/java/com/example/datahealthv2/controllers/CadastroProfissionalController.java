@@ -34,16 +34,11 @@ public class CadastroProfissionalController extends BaseController {
         ProfissionalDAO profissional = new ProfissionalDAO();
         Boolean dadosValidos = false;
 
-        UsuarioProfissional user = new UsuarioProfissional();
-        user.setCpf(txtCpf.getText());
-        user.setCargo(txtCargo.getText());
-        user.setRegistroProfissional(txtRegistroProfissional.getText());
-        user.setMatricula(txtCargo.getText());
-        user.setSenha(txtSenha.getText());
-        user.setNome(txtNome.getText());
-        user.setMatricula(txtMatricula.getText());
+        UsuarioProfissional user = new UsuarioProfissional(txtNome.getText(), txtCpf.getText(), txtSenha.getText(),
+                txtMatricula.getText(), txtCargo.getText(), txtRegistroProfissional.getText());
 
         String confirmarSenha = txtConfirmarSenha.getText();
+
         dadosValidos = ValidaDados(user, confirmarSenha);
 
         if (dadosValidos) {
