@@ -41,7 +41,7 @@ public class ProfissionalDAO <E extends Entidade> extends DAO {
 
     @Override
     protected String getLocalizaCommand() {
-        return "select * from usuario_profisisonal WHERE Cpf = ?";
+        return "select * from usuario_profissional WHERE Cpf = ?";
     }
 
     @Override
