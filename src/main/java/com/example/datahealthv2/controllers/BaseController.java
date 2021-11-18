@@ -89,6 +89,9 @@ public class BaseController {
     public static void addOnchageScreenListener(onChangeScreen newListener) {
         listeners.add(newListener);
     }
+    public static void clearAllListeners() {
+        listeners.removeAll(listeners);
+    }
 
     private static void notifyAllListeners(String newScreen, Object objectData) {
         for (onChangeScreen l : listeners) {

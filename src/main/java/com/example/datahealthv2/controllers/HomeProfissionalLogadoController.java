@@ -50,6 +50,6 @@ public class HomeProfissionalLogadoController extends BaseController {
     @FXML
     public void clickLogoff(ActionEvent event) throws IOException, SQLException {
         (((Node) event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_home_login.fxml", "Tela Home");
+        openNewScreen("layout_home_login.fxml", "Tela Home", user);
     }
 }

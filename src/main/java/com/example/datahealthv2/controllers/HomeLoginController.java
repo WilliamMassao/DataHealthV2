@@ -13,12 +13,14 @@ public class HomeLoginController extends BaseController {
     @FXML
     void switchToLoginPaciente(ActionEvent event) throws IOException, SQLException {
         ((Node) (event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_login_paciente.fxml", "Tela de Login Paciente");
+        clearAllListeners();
+        openNewScreen("layout_login_paciente.fxml", "Tela de Login Paciente", null);
     }
 
     @FXML
     void switchToLoginProfissional(ActionEvent event) throws IOException, SQLException {
         ((Node) (event.getSource())).getScene().getWindow().hide();
-        openNewScreen("layout_login_profissional.fxml", "Tela de Login Profissional");
+        clearAllListeners();
+        openNewScreen("layout_login_profissional.fxml", "Tela de Login Profissional", null);
     }
 }
